@@ -8,7 +8,10 @@ import (
 func main() {
 
 	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/c", http.StripPrefix("/c", fs))
+
+	//En los strings de a continuación, puedo indicar exactamente la continuación del Dominio para ingresar
+
+	http.Handle("/", http.StripPrefix("/", fs))
 
 	http.ListenAndServe(":8080", nil)
 	// handler()
