@@ -2,21 +2,22 @@ package main
 
 import (
 	"net/http"
-	// "fmt"
+	"log"
 )
 
 func main() {
 
 	fs := http.FileServer(http.Dir("./static"))
+	direction := ":8080"
 
 	//En los strings de a continuación, puedo indicar exactamente la continuación del Dominio para ingresar
 
-	http.Handle("/", http.StripPrefix("/", fs))
+	http.Handle("/", http.StripPrefix("/", fs)) // En esta opción mediante un handler, podría escribir algo desde esa misma función
 
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(direction, nil))
 	// handler()
 }
 
-// func handler(w http.ResponseWriter, r *http.Request) {
-// fmt.Fprintf(w, "URL.Path = %q\n", r.URL.Path)
+// func handler(w http.ResponseWriter, _ *http.Request) {
+// 	fmt.Fprintf(w, "TEST TEST TEST TEST")
 // }
