@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
-	"html/template"
+	"html/template" //generar una salida HTML segura contra la inyección de código.
 	"log"
 	"net/http"
 )
+
+
 
 
 func main() {
@@ -38,6 +40,8 @@ func main() {
 	} )
 
 	log.Fatal(http.ListenAndServe(direction, nil))
+
+
 }
 
 //////////////////////////////
@@ -61,9 +65,18 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func unionConHTML(w http.ResponseWriter, r *http.Request) {
 	template:= template.Must(template.ParseFiles("templates/index.html"))
-	template.Execute(w, struct{ Saludo string} {"Vengo de GOLANG"})
+	template.Execute(w, struct{ Saludo string}{"Vengo de GOLANG"})
 
+	
 	}
+
+//////////////////////
+
+
+
+
+
+
 
 
 
